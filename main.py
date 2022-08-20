@@ -2,7 +2,6 @@ from tkinter import *
 from functools import partial
 import random
 
-
 root = Tk()
 root.title("Multiplayer Mode")  # Window title
 
@@ -24,6 +23,30 @@ dble_bets_1 = 0  # and their bets
 
 dble_creds_2 = 500  # Intial value for credits for player two
 dble_bets_2 = 0  # and their bets
+
+
+def dble_add_creds_1():
+    global dble_creds_1
+    dble_creds_1 += dble_bets_1
+    dble_creds_1_counter.set("Credits: ${:.2f}".format(dble_creds_1))
+
+
+def dble_sub_creds_1():
+    global dble_creds_1
+    dble_creds_1 -= dble_bets_1
+    dble_creds_1_counter.set("Credits: ${:.2f}".format(dble_creds_1))
+
+
+def dble_add_creds_2():
+    global dble_creds_2
+    dble_creds_2 += dble_bets_2
+    dble_creds_2_counter.set("Credits: ${:.2f}".format(dble_creds_2))
+
+
+def dble_sub_creds_2():
+    global dble_creds_2
+    dble_creds_2 -= dble_bets_2
+    dble_creds_2_counter.set("Credits: ${:.2f}".format(dble_creds_2))
 
 
 def dble_bets_add_1():
@@ -118,61 +141,98 @@ dble_bet_sub_but_2 = Button(dble_frame,
                             command=dble_bets_sub_2)
 dble_bet_sub_but_2.place(x=580, y=180)
 
+
 def dble_buttons_state_play():
-  dble_bet_add_but_1.config(state=DISABLED)
-  dble_bet_sub_but_1.config(state=DISABLED)
-  dble_bet_add_but_2.config(state=DISABLED)
-  dble_bet_sub_but_2.config(state=DISABLED)
-  dble_confirm_bets.config(state=DISABLED)
-  dble_crds_generate()
+    dble_bet_add_but_1.config(state=DISABLED)
+    dble_bet_sub_but_1.config(state=DISABLED)
+    dble_bet_add_but_2.config(state=DISABLED)
+    dble_bet_sub_but_2.config(state=DISABLED)
+    dble_confirm_bets.config(state=DISABLED)
+    dble_hit_but_1.config(state=DISABLED)
+    dble_stay_but_1.config(state=DISABLED)
+    dble_double_but_1.config(state=DISABLED)
+    dble_hit_but_2.config(state=DISABLED)
+    dble_stay_but_2.config(state=DISABLED)
+    dble_double_but_2.config(state=DISABLED)
+    dble_crds_generate()
+
 
 def dble_crds_generate():
-  global dble_crd_1_play_1
-  global dble_crd_2_play_1
-  global dble_crd_1_play_2
-  global dble_crd_2_play_2
-  global dble_play_1_crd_ttl
-  global dble_play_2_crd_ttl
-  global dble_crd_1_deal
-  global dble_crd_2_deal
-  global dble_deal_crd_ttl
-  dble_crd_1_play_1 = random.randint(1, 11)
-  dble_crd_2_play_1 = random.randint(1, 11)
-  dble_crd_1_play_2 = random.randint(1, 11)
-  dble_crd_2_play_2 = random.randint(1, 11)
-  dble_play_1_crd_ttl = (dble_crd_1_play_1 + dble_crd_2_play_1)
-  dble_play_2_crd_ttl = (dble_crd_1_play_2 + dble_crd_2_play_2)
-  dble_crd_1_deal = random.randint(1, 11)
-  dble_crd_2_deal = random.randint(1, 11)
-  dble_deal_crd_ttl = (dble_crd_1_deal + dble_crd_2_deal)
-  dble_cnfrm_bets()
+    global dble_crd_1_play_1
+    global dble_crd_2_play_1
+    global dble_crd_1_play_2
+    global dble_crd_2_play_2
+    global dble_play_1_crd_ttl
+    global dble_play_2_crd_ttl
+    global dble_crd_1_deal
+    global dble_crd_2_deal
+    global dble_deal_crd_ttl
+    dble_crd_1_play_1 = random.randint(1, 11)
+    dble_crd_2_play_1 = random.randint(1, 11)
+    dble_crd_1_play_2 = random.randint(1, 11)
+    dble_crd_2_play_2 = random.randint(1, 11)
+    dble_play_1_crd_ttl = (dble_crd_1_play_1 + dble_crd_2_play_1)
+    dble_play_2_crd_ttl = (dble_crd_1_play_2 + dble_crd_2_play_2)
+    dble_crd_1_deal = random.randint(1, 11)
+    dble_crd_2_deal = random.randint(1, 11)
+    dble_deal_crd_ttl = (dble_crd_1_deal + dble_crd_2_deal)
+    dble_cnfrm_bets()
+
 
 def dble_cnfrm_bets():
-  print("Player 1 cards: ", dble_crd_1_play_1, dble_crd_2_play_1)
-  print("Player 2 cards: ", dble_crd_1_play_2, dble_crd_2_play_1)
-  if dble_play_1_crd_ttl == 21:
-    print("Player 1 wins!!")
-    dble_bet_add_but_1.config(state=DISABLED)
-    dble_bet_sub_but_1.config(state=DISABLED)
-    dble_bet_add_but_2.config(state=DISABLED)
-    dble_bet_sub_but_2.config(state=DISABLED)
-    dble_confirm_bets.config(state=DISABLED)
-  if dble_play_1_crd_ttl > 21:
-    print("Player 1 loses")
-  if dble_play_2_crd_ttl == 21:
-    print("Player 2 wins!!")
-    dble_bet_add_but_1.config(state=DISABLED)
-    dble_bet_sub_but_1.config(state=DISABLED)
-    dble_bet_add_but_2.config(state=DISABLED)
-    dble_bet_sub_but_2.config(state=DISABLED)
-    dble_confirm_bets.config(state=DISABLED)
-  if dble_play_2_crd_ttl > 21:
-    print("Player 2 loses")
-  if dble_play_1_crd_ttl and dble_play_2_crd_ttl < 21:
-    print("Choose an action (player 1 goes first)")
-    pass
+    print("Player 1 cards: ", dble_crd_1_play_1, dble_crd_2_play_1)
+    print("Player 2 cards: ", dble_crd_1_play_2, dble_crd_2_play_1)
+    if dble_play_1_crd_ttl == 21:
+        print("Player 1 wins!!")
+        dble_bet_add_but_1.config(state=DISABLED)
+        dble_bet_sub_but_1.config(state=DISABLED)
+        dble_bet_add_but_2.config(state=DISABLED)
+        dble_bet_sub_but_2.config(state=DISABLED)
+        dble_confirm_bets.config(state=DISABLED)
+        dble_add_creds_1()
+    if dble_play_1_crd_ttl > 21:
+        print("Player 1 loses")
+        dble_sub_creds_1()
+    if dble_play_2_crd_ttl == 21:
+        print("Player 2 wins!!")
+        dble_bet_add_but_1.config(state=DISABLED)
+        dble_bet_sub_but_1.config(state=DISABLED)
+        dble_bet_add_but_2.config(state=DISABLED)
+        dble_bet_sub_but_2.config(state=DISABLED)
+        dble_confirm_bets.config(state=DISABLED)
+        dble_add_creds_2()
+    if dble_play_2_crd_ttl > 21:
+        print("Player 2 loses")
+        dble_sub_creds_2()
+    if dble_play_1_crd_ttl and dble_play_2_crd_ttl < 21:
+        print("Choose an action (player 1 goes first)")
+        pass
 
-dble_confirm_bets = Button(dble_frame, text="Confirm bets", bg="orange", bd=1, command=dble_buttons_state_play)
+
+dble_confirm_bets = Button(dble_frame,
+                           text="Confirm bets",
+                           bg="orange",
+                           bd=1,
+                           command=dble_buttons_state_play)
 dble_confirm_bets.place(x=300, y=450)
+
+dble_hit_but_1 = Button(dble_frame, text="Hit", bg="white", bd=1)
+dble_hit_but_1.place(x=62, y=340)
+
+dble_stay_but_1 = Button(dble_frame, text="Stay", bg="white", bd=1)
+dble_stay_but_1.place(x=20, y=380)
+
+dble_double_but_1 = Button(dble_frame, text="Double", bg="white", bd=1)
+dble_double_but_1.place(x=90, y=380)
+
+dble_hit_but_2 = Button(dble_frame, text="Hit", bg="white", bd=1)
+dble_hit_but_2.place(x=583, y=340)
+
+dble_stay_but_2 = Button(dble_frame, text="Stay", bg="white", bd=1)
+dble_stay_but_2.place(x=540, y=380)
+
+dble_double_but_2 = Button(dble_frame, text="Double", bg="white", bd=1)
+dble_double_but_2.place(x=610, y=380)
+
 
 root.mainloop()  # Loops the program until stopped/exited
