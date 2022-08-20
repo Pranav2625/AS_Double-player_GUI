@@ -1,5 +1,7 @@
 from tkinter import *
 from functools import partial
+import random
+
 
 root = Tk()
 root.title("Multiplayer Mode")  # Window title
@@ -31,6 +33,7 @@ def dble_bets_add_1():
     dble_bets_1_counter.set("Bets: ${:.2f}".format(dble_bets_1))
     dble_bet_add_sub_var.set(5)
 
+
 def dble_bets_sub_1():
     global dble_bets_1
     dble_bet_add_1 = dble_bet_add_sub_var.get()
@@ -45,6 +48,7 @@ def dble_bets_add_2():
     dble_bets_2 += dble_bet_add_2
     dble_bets_2_counter.set("Bets: ${:.2f}".format(dble_bets_2))
     dble_bet_add_sub_var.set(5)
+
 
 def dble_bets_sub_2():
     global dble_bets_2
@@ -76,7 +80,7 @@ dble_creds_2_display = Label(dble_frame,
                              textvariable=dble_creds_2_counter,
                              bg="orange",
                              font="Times 10")
-dble_creds_2_display.place(x=555, y=70)
+dble_creds_2_display.place(x=557, y=70)
 
 dble_bets_2_counter = StringVar()
 dble_bets_2_counter.set("Bets: $0.00")
@@ -101,17 +105,74 @@ dble_bet_sub_but_1 = Button(dble_frame,
                             command=dble_bets_sub_1)
 dble_bet_sub_but_1.place(x=20, y=180)
 
-dble_bet_add_but_2 = Button(dble_frame, 
-                            text="Add bets", 
-                            bg="gold", 
-                            bd=1, 
+dble_bet_add_but_2 = Button(dble_frame,
+                            text="Add bets",
+                            bg="gold",
+                            bd=1,
                             command=dble_bets_add_2)
 dble_bet_add_but_2.place(x=604, y=150)
 dble_bet_sub_but_2 = Button(dble_frame,
-                            text="Remove bets", 
-                            bg="gold", 
-                            bd=1, 
+                            text="Remove bets",
+                            bg="gold",
+                            bd=1,
                             command=dble_bets_sub_2)
 dble_bet_sub_but_2.place(x=580, y=180)
+
+def dble_buttons_state_play():
+  dble_bet_add_but_1.config(state=DISABLED)
+  dble_bet_sub_but_1.config(state=DISABLED)
+  dble_bet_add_but_2.config(state=DISABLED)
+  dble_bet_sub_but_2.config(state=DISABLED)
+  dble_confirm_bets.config(state=DISABLED)
+  dble_crds_generate()
+
+def dble_crds_generate():
+  global dble_crd_1_play_1
+  global dble_crd_2_play_1
+  global dble_crd_1_play_2
+  global dble_crd_2_play_2
+  global dble_play_1_crd_ttl
+  global dble_play_2_crd_ttl
+  global dble_crd_1_deal
+  global dble_crd_2_deal
+  global dble_deal_crd_ttl
+  dble_crd_1_play_1 = random.randint(1, 11)
+  dble_crd_2_play_1 = random.randint(1, 11)
+  dble_crd_1_play_2 = random.randint(1, 11)
+  dble_crd_2_play_2 = random.randint(1, 11)
+  dble_play_1_crd_ttl = (dble_crd_1_play_1 + dble_crd_2_play_1)
+  dble_play_2_crd_ttl = (dble_crd_1_play_2 + dble_crd_2_play_2)
+  dble_crd_1_deal = random.randint(1, 11)
+  dble_crd_2_deal = random.randint(1, 11)
+  dble_deal_crd_ttl = (dble_crd_1_deal + dble_crd_2_deal)
+  dble_cnfrm_bets()
+
+def dble_cnfrm_bets():
+  print("Player 1 cards: ", dble_crd_1_play_1, dble_crd_2_play_1)
+  print("Player 2 cards: ", dble_crd_1_play_2, dble_crd_2_play_1)
+  if dble_play_1_crd_ttl == 21:
+    print("Player 1 wins!!")
+    dble_bet_add_but_1.config(state=DISABLED)
+    dble_bet_sub_but_1.config(state=DISABLED)
+    dble_bet_add_but_2.config(state=DISABLED)
+    dble_bet_sub_but_2.config(state=DISABLED)
+    dble_confirm_bets.config(state=DISABLED)
+  if dble_play_1_crd_ttl > 21:
+    print("Player 1 loses")
+  if dble_play_2_crd_ttl == 21:
+    print("Player 2 wins!!")
+    dble_bet_add_but_1.config(state=DISABLED)
+    dble_bet_sub_but_1.config(state=DISABLED)
+    dble_bet_add_but_2.config(state=DISABLED)
+    dble_bet_sub_but_2.config(state=DISABLED)
+    dble_confirm_bets.config(state=DISABLED)
+  if dble_play_2_crd_ttl > 21:
+    print("Player 2 loses")
+  if dble_play_1_crd_ttl and dble_play_2_crd_ttl < 21:
+    print("Choose an action (player 1 goes first)")
+    pass
+
+dble_confirm_bets = Button(dble_frame, text="Confirm bets", bg="orange", bd=1, command=dble_buttons_state_play)
+dble_confirm_bets.place(x=300, y=450)
 
 root.mainloop()  # Loops the program until stopped/exited
