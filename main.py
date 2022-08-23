@@ -220,16 +220,39 @@ dble_confirm_bets.place(x=300, y=450)
 
 
 def dble_crd_check():
-  global dble_play_1_crd_ttl
-  global dble_play_2_crd_ttl
-  if dble_play_1_crd_ttl > dble_play_2_crd_ttl:
-    print("Player 2 is out")
-  if dble_play_1_crd_ttl < dble_play_2_crd_ttl:
-    print("Player 1 is out")
+    if dble_play_1_crd_ttl > dble_play_2_crd_ttl:
+        print("Player 2 is out")
+        dble_sub_creds_2()
+        dble_play_1_v_deal()
+    if dble_play_1_crd_ttl < dble_play_2_crd_ttl:
+        print("Player 1 is out")
+        dble_sub_creds_1()
 
 
 def dble_play_1_v_deal():
-  
+    print("Dealer cards", dble_crd_1_deal, dble_crd_2_deal)
+    if dble_deal_crd_ttl == 21:
+        print("Dealer wins")
+        dble_sub_creds_1()
+    if dble_deal_crd_ttl > 21:
+        print("Player 1 wins")
+        dble_add_creds_1()
+    if dble_deal_crd_ttl < dble_play_1_crd_ttl:
+        print("Player 1 wins")
+        dble_add_creds_1()
+
+
+def dble_play_2_v_deal():
+    print("Dealer cards", dble_crd_1_deal, dble_crd_2_deal)
+    if dble_deal_crd_ttl == 21:
+        print("Dealer wins")
+        dble_sub_creds_2()
+    if dble_deal_crd_ttl > 21:
+        print("Player 2 wins")
+        dble_add_creds_2()
+    if dble_deal_crd_ttl < dble_play_2_crd_ttl:
+        print("Player 2 wins")
+        dble_add_creds_2()
 
 
 def dble_hit_1():
