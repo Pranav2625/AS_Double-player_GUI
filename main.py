@@ -24,6 +24,24 @@ dble_bets_1 = 5  # and their bets
 dble_creds_2 = 500  # Intial value for credits for player two
 dble_bets_2 = 5  # and their bets
 
+# dble_crd_1_play_1 = random.randint(1, 11)
+# dble_crd_2_play_1 = random.randint(1, 11)
+# dble_crd_1_play_2 = random.randint(1, 11)
+# dble_crd_2_play_2 = random.randint(1, 11)
+# dble_play_1_crd_ttl = (dble_crd_1_play_1 + dble_crd_2_play_1)
+# dble_play_2_crd_ttl = (dble_crd_1_play_2 + dble_crd_2_play_2)
+dble_play_1_crd_1 = random.randint(1, 11)
+dble_play_1_crd_2 = random.randint(1, 11)
+dble_play_1_ttl = (dble_play_1_crd_1 + dble_play_1_crd_2)
+dble_play_2_crd_1 = random.randint(1, 11)
+dble_play_2_crd_2 = random.randint(1, 11)
+dble_play_2_ttl = (dble_play_2_crd_1 + dble_play_2_crd_2)
+dble_crd_1_deal = random.randint(1, 11)
+dble_crd_2_deal = random.randint(1, 11)
+dble_deal_crd_ttl = (dble_crd_1_deal + dble_crd_2_deal)
+dble_crd_hit_1 = random.randint(1, 11)
+dble_crd_hit_2 = random.randint(1, 11)
+
 
 def dble_add_creds_1():
     global dble_creds_1
@@ -148,71 +166,74 @@ def dble_buttons_state_play():
     dble_bet_add_but_2.config(state=DISABLED)
     dble_bet_sub_but_2.config(state=DISABLED)
     dble_confirm_bets.config(state=DISABLED)
-    dble_crds_generate()
-
-
-def dble_crds_generate():
-    global dble_crd_1_play_1
-    global dble_crd_2_play_1
-    global dble_crd_1_play_2
-    global dble_crd_2_play_2
-    global dble_play_1_crd_ttl
-    global dble_play_2_crd_ttl
-    global dble_crd_1_deal
-    global dble_crd_2_deal
-    global dble_deal_crd_ttl
-    global dble_crd_hit_1
-    global dble_crd_hit_2
-    dble_crd_1_play_1 = random.randint(1, 11)
-    dble_crd_2_play_1 = random.randint(1, 11)
-    dble_crd_1_play_2 = random.randint(1, 11)
-    dble_crd_2_play_2 = random.randint(1, 11)
-    dble_play_1_crd_ttl = (dble_crd_1_play_1 + dble_crd_2_play_1)
-    dble_play_2_crd_ttl = (dble_crd_1_play_2 + dble_crd_2_play_2)
-    dble_crd_1_deal = random.randint(1, 11)
-    dble_crd_2_deal = random.randint(1, 11)
-    dble_deal_crd_ttl = (dble_crd_1_deal + dble_crd_2_deal)
-    dble_crd_hit_1 = random.randint(1, 11)
-    dble_crd_hit_2 = random.randint(1, 11)
+    # dble_crds_generate()
     dble_cnfrm_bets()
 
 
+# def dble_crds_generate():
+#     global dble_crd_1_play_1
+#     global dble_crd_2_play_1
+#     global dble_crd_1_play_2
+#     global dble_crd_2_play_2
+#     global dble_play_1_crd_ttl
+#     global dble_play_2_crd_ttl
+#     global dble_crd_1_deal
+#     global dble_crd_2_deal
+#     global dble_deal_crd_ttl
+#     global dble_crd_hit_1
+#     global dble_crd_hit_2
+#     dble_crd_1_play_1 = random.randint(1, 11)
+#     dble_crd_2_play_1 = random.randint(1, 11)
+#     dble_crd_1_play_2 = random.randint(1, 11)
+#     dble_crd_2_play_2 = random.randint(1, 11)
+#     dble_play_1_crd_ttl = (dble_crd_1_play_1 + dble_crd_2_play_1)
+#     dble_play_2_crd_ttl = (dble_crd_1_play_2 + dble_crd_2_play_2)
+#     dble_crd_1_deal = random.randint(1, 11)
+#     dble_crd_2_deal = random.randint(1, 11)
+#     dble_deal_crd_ttl = (dble_crd_1_deal + dble_crd_2_deal)
+#     dble_crd_hit_1 = random.randint(1, 11)
+#     dble_crd_hit_2 = random.randint(1, 11)
+#     dble_cnfrm_bets()
+
+
 def dble_cnfrm_bets():
-    global dble_crd_1_play_1
-    global dble_crd_2_play_1
-    global dble_crd_1_play_2
-    global dble_crd_2_play_2
-    global dble_play_1_crd_ttl
-    global dble_play_2_crd_ttl
-    print("Player 1 cards: ", dble_crd_1_play_1, dble_crd_2_play_1)
-    print("Player 2 cards: ", dble_crd_1_play_2, dble_crd_2_play_1, "\n")
-    if dble_play_1_crd_ttl == 21:
+    global dble_play_1_crd_1
+    global dble_play_1_crd_2
+    global dble_play_1_ttl
+    global dble_play_2_crd_1
+    global dble_play_2_crd_2
+    global dble_play_2_ttl
+    print("Player 1 cards: ", dble_play_1_crd_1, dble_play_1_crd_2)
+    print(dble_play_1_ttl, "\n")
+    print("Player 2 cards: ", dble_play_2_crd_1, dble_play_2_crd_2)
+    print(dble_play_2_ttl, "\n")
+    if dble_play_1_ttl == 21:
         print("Player 1 wins!!")
-        dble_bet_add_but_1.config(state=DISABLED)
-        dble_bet_sub_but_1.config(state=DISABLED)
-        dble_bet_add_but_2.config(state=DISABLED)
-        dble_bet_sub_but_2.config(state=DISABLED)
-        dble_confirm_bets.config(state=DISABLED)
+        dble_bet_add_but_1.config(state=NORMAL)
+        dble_bet_sub_but_1.config(state=NORMAL)
+        dble_bet_add_but_2.config(state=NORMAL)
+        dble_bet_sub_but_2.config(state=NORMAL)
+        dble_confirm_bets.config(state=NORMAL)
         dble_add_creds_1()
         dble_sub_creds_2()
-    if dble_play_1_crd_ttl > 21:
+    if dble_play_1_ttl > 21:
         print("Player 1 loses")
         dble_sub_creds_1()
         dble_play_2_v_deal()
-    if dble_play_2_crd_ttl == 21:
+    if dble_play_2_ttl == 21:
         print("Player 2 wins!!")
-        dble_bet_add_but_1.config(state=DISABLED)
-        dble_bet_sub_but_1.config(state=DISABLED)
-        dble_bet_add_but_2.config(state=DISABLED)
-        dble_bet_sub_but_2.config(state=DISABLED)
-        dble_confirm_bets.config(state=DISABLED)
+        dble_bet_add_but_1.config(state=NORMAL)
+        dble_bet_sub_but_1.config(state=NORMAL)
+        dble_bet_add_but_2.config(state=NORMAL)
+        dble_bet_sub_but_2.config(state=NORMAL)
+        dble_confirm_bets.config(state=NORMAL)
         dble_add_creds_2()
         dble_sub_creds_1()
-    if dble_play_2_crd_ttl > 21:
+    if dble_play_2_ttl > 21:
         print("Player 2 loses")
         dble_sub_creds_2()
         dble_play_1_crd_ttl_v_deal()
-    if dble_play_1_crd_ttl and dble_play_2_crd_ttl < 21:
+    if dble_play_1_ttl and dble_play_2_ttl < 21:
         print("Choose an action (player 1 goes first)")
         dble_hit_but_1.config(state=NORMAL)
         dble_stay_but_1.config(state=NORMAL)
@@ -228,13 +249,13 @@ dble_confirm_bets.place(x=300, y=450)
 
 
 def dble_crd_check():
-    global dble_play_1_crd_ttl
-    global dble_play_2_crd_ttl
-    if dble_play_1_crd_ttl > dble_play_2_crd_ttl:
+    global dble_play_1_ttl
+    global dble_play_2_ttl
+    if dble_play_1_ttl > dble_play_2_ttl:
         print("Player 2 is out")
         dble_sub_creds_2()
         dble_play_1_v_deal()
-    if dble_play_1_crd_ttl < dble_play_2_crd_ttl:
+    if dble_play_1_ttl < dble_play_2_ttl:
         print("Player 1 is out")
         dble_sub_creds_1()
         dble_play_2_v_deal()
@@ -248,9 +269,22 @@ def dble_play_1_v_deal():
     if dble_deal_crd_ttl > 21:
         print("Player 1 wins")
         dble_add_creds_1()
-    if dble_deal_crd_ttl < dble_play_1_crd_ttl:
+    if dble_deal_crd_ttl > dble_play_1_ttl:
+        print("Dealer wins")
+        dble_sub_creds_1()
+        dble_bet_add_but_1.config(state=NORMAL)
+        dble_bet_sub_but_1.config(state=NORMAL)
+        dble_bet_add_but_2.config(state=NORMAL)
+        dble_bet_sub_but_2.config(state=NORMAL)
+        dble_confirm_bets.config(state=NORMAL)
+    if dble_deal_crd_ttl < dble_play_1_ttl:
         print("Player 1 wins")
         dble_add_creds_1()
+    dble_bet_add_but_1.config(state=NORMAL)
+    dble_bet_sub_but_1.config(state=NORMAL)
+    dble_bet_add_but_2.config(state=NORMAL)
+    dble_bet_sub_but_2.config(state=NORMAL)
+    dble_confirm_bets.config(state=NORMAL)
 
 
 def dble_play_2_v_deal():
@@ -261,25 +295,30 @@ def dble_play_2_v_deal():
     if dble_deal_crd_ttl > 21:
         print("Player 2 wins")
         dble_add_creds_2()
-    if dble_deal_crd_ttl < dble_play_2_crd_ttl:
+    if dble_deal_crd_ttl < dble_play_2_ttl:
         print("Player 2 wins")
         dble_add_creds_2()
+    dble_bet_add_but_1.config(state=NORMAL)
+    dble_bet_sub_but_1.config(state=NORMAL)
+    dble_bet_add_but_2.config(state=NORMAL)
+    dble_bet_sub_but_2.config(state=NORMAL)
+    dble_confirm_bets.config(state=NORMAL)
 
 
 def dble_hit_1():
-    global dble_play_1_crd_ttl
+    global dble_play_1_ttl
     global dble_crd_hit_1
-    dble_play_1_crd_ttl += dble_crd_hit_1
+    dble_play_1_ttl += dble_crd_hit_1
     print("Player 1 hit card: ", dble_crd_hit_1)
-    print(dble_play_1_crd_ttl)
-    if dble_play_1_crd_ttl == 21:
+    print(dble_play_1_ttl)
+    if dble_play_1_ttl == 21:
         print("Player 1 wins")
         dble_add_creds_1()
-    if dble_play_1_crd_ttl > 21:
+    if dble_play_1_ttl > 21:
         print("Player 1 is busted")
         dble_sub_creds_1()
         dble_play_2_v_deal()
-    if dble_play_1_crd_ttl < 21:
+    if dble_play_1_ttl < 21:
         print("Play on")
         dble_hit_but_1.config(state=DISABLED)
         dble_stay_but_1.config(state=DISABLED)
@@ -334,19 +373,19 @@ dble_double_but_1.place(x=90, y=380)
 
 
 def dble_hit_2():
-    global dble_play_2_crd_ttl
+    global dble_play_2_ttl
     global dble_crd_hit_2
-    dble_play_2_crd_ttl += dble_crd_hit_2
+    dble_play_2_ttl += dble_crd_hit_2
     print("Player 2 hit card: ", dble_crd_hit_2)
-    print(dble_play_2_crd_ttl)
-    if dble_play_2_crd_ttl == 21:
+    print(dble_play_2_ttl)
+    if dble_play_2_ttl == 21:
         print("Player 2 wins")
         dble_add_creds_2()
-    if dble_play_2_crd_ttl > 21:
+    if dble_play_2_ttl > 21:
         print("Player 2 is busted")
         dble_sub_creds_2()
         dble_play_1_v_deal()
-    if dble_play_2_crd_ttl < 21:
+    if dble_play_2_ttl < 21:
         print("Play on")
         dble_hit_but_2.config(state=DISABLED)
         dble_stay_but_2.config(state=DISABLED)
@@ -384,7 +423,6 @@ dble_double_but_2 = Button(dble_frame,
                            bd=1,
                            command=dble_double_2)
 dble_double_but_2.place(x=610, y=380)
-
 
 dble_hit_but_1.config(state=DISABLED)
 dble_stay_but_1.config(state=DISABLED)
